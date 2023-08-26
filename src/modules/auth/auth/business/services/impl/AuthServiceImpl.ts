@@ -6,7 +6,7 @@ import { AuthService } from '../AuthService'
 import { UserService } from '@/modules/auth/user/business/services/UserService'
 import PasswordFacade from '../../facades/PasswordFacade'
 import JWTFacade from '../../../../../../shared/facades/TokenFacade'
-import { TOKEN_EXPIRATION } from '@/config/env'
+// import { TOKEN_EXPIRATION } from '@/config/env'
 
 @injectable()
 export class AuthServiceImpl implements AuthService {
@@ -25,7 +25,7 @@ export class AuthServiceImpl implements AuthService {
 
         const simpleUser = JSON.parse(JSON.stringify(user))
 
-        return { token: await JWTFacade.sign(simpleUser, { expiresIn: TOKEN_EXPIRATION }) }
+        return { token: await JWTFacade.sign(simpleUser) }
     }
 
     async signup(auth: AuthDTO): Promise<TokenDTO> {
