@@ -8,7 +8,7 @@ export class BaseServiceImpl<T, U, V> implements BaseService<T, U, V> {
     
     constructor(
         @inject('BaseRepository')
-        private baseRepository: BaseRepository<T, U, V>
+        protected baseRepository: BaseRepository<T, U, V>
     ) {}
 
     async getItems(): Promise<T[]> {
@@ -29,6 +29,10 @@ export class BaseServiceImpl<T, U, V> implements BaseService<T, U, V> {
 
     async updateItem(id: number, item: V): Promise<T> {
         return this.baseRepository.updateItem(id, item)
+    }
+
+    async updateItemWithRelationsManyToMany(id: number, item: V, relationName: string, relatedIds: number[]): Promise<T> {
+        return this.baseRepository.updateItemWithRelationsManyToMany(id, item, relationName, relatedIds)
     }
 
     async deleteItem(id: number): Promise<void> {

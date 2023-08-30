@@ -4,5 +4,6 @@ export interface BaseService<T, U, V> {
     getItemByField(field: string, value: string): Promise<T>
     createItem(item: U): Promise<T>
     updateItem(id: number, item: V): Promise<T>
+    updateItemWithRelationsManyToMany(id: number, item: V, relationName: string, relatedIds: number[]): Promise<T>
     deleteItem(id: number): Promise<void>
 }

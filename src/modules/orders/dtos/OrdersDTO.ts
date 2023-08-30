@@ -1,6 +1,7 @@
 export class OrdersDTO {
   id: number
   quantity: number
+  product_price: number
   total: number
 }
 

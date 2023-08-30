@@ -40,6 +40,12 @@ export class BaseControllerImpl<T, U, V> implements BaseController {
         return res.json(item)
     }
 
+    public async updateItemWithRelationsManyToMany(req: Request, res: Response): Promise<Response> {
+        const { id, relationName } = req.params
+        const item = await this.baseService.updateItemWithRelationsManyToMany(Number(id), req.body.item as V, relationName, req.body.relatedIds)
+        return res.json(item)
+    }
+
     public async deleteItem(req: Request, res: Response): Promise<Response> {
         const { id } = req.params
         await this.baseService.deleteItem(Number(id))

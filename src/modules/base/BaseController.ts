@@ -6,5 +6,6 @@ export interface BaseController {
     getItemByField(req: Request, res: Response): Promise<Response>
     createItem(req: Request, res: Response): Promise<Response>
     updateItem(req: Request, res: Response): Promise<Response>
+    updateItemWithRelationsManyToMany(req: Request, res: Response): Promise<Response>
     deleteItem(req: Request, res: Response): Promise<Response>
 }

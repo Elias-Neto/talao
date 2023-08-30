@@ -8,6 +8,7 @@ const baseRoutes = (controller: any) => {
     router.get('/:field/:value', (req, res) => controller.getItemByField(req, res))
     router.post('/', (req, res) => controller.createItem(req, res))
     router.put('/:id', (req, res) => controller.updateItem(req, res))
+    router.put('/:id/:relationName', (req, res) => controller.updateItemWithRelationsManyToMany(req, res))
     router.delete('/:id', (req, res) => controller.deleteItem(req, res))
 
     return router
